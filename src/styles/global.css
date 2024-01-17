@@ -1,0 +1,45 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	max-width: 1920px;
+	margin: 0 auto;
+	background-color: var(--theme-bg);
+	position: relative;
+}
+
+pre {
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow: auto;
+}
+
+pre .language-id {
+  display: none;
+}
+
+
+.question {
+	margin: 0 0 4rem 0;
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.text-large {
+	font-size: 1.25rem;
+	font-weight: 600;
+	text-align: center;
+	margin: 0 0 2rem 0;
+}
+
+.text-base {
+	font-size: 1rem;
+	text-align: center;
+}
+
+.list-item {
+	text-align: left;
+}

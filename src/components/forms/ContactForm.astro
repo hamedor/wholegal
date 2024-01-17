@@ -1,0 +1,153 @@
+---
+import FormInput from './formFields/FormInput.astro';
+import FormTextarea from './formFields/FormTextarea.astro'
+
+---
+
+<script>
+	let intervalId;
+	let dots = '';
+
+	document
+		.querySelector('form[name="Contact Form"]')
+		.addEventListener('submit', async function (event) {
+			event.preventDefault();
+
+			const nameInput = document.querySelector(
+				'input[name="Name"]'
+			) as HTMLInputElement;
+			const phoneInput = document.querySelector(
+				'input[name="Phone"]'
+			) as HTMLInputElement;
+			const messageInput = document.querySelector(
+				'textarea[name="Message"]'
+			) as HTMLTextAreaElement;
+			const statusDiv = document.querySelector('#status') as HTMLElement;
+			const submitBtn = document.querySelector('#submitBtn') as HTMLElement;
+
+			submitBtn.setAttribute('disabled', '');
+
+			submitBtn.textContent = 'Отправляем';
+			intervalId = setInterval(() => {
+				dots = (dots.length < 3) ? dots + '.' : '';
+				submitBtn.textContent = 'Отправляем' + dots;
+			}, 500);
+
+
+			const name = nameInput.value;
+			const phone = phoneInput.value;
+			const message = messageInput.value;
+
+			const data = { name, phone, message };
+
+
+			try {
+				const response = await fetch(import.meta.env.PUBLIC_SERVER, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(data),
+				});
+
+				if (response.ok) {
+
+					statusDiv.classList.remove('error');
+					statusDiv.classList.add('success');
+					statusDiv.textContent = 'Успешно отправлено!';
+					
+					statusDiv.style.display = 'block';
+
+					nameInput.value = '';
+					phoneInput.value = '';
+					messageInput.value = '';
+				} else {
+					const errorData = await response.json();
+					statusDiv.classList.remove('success');
+					statusDiv.classList.add('error');
+					statusDiv.textContent = errorData.error;
+					
+					statusDiv.style.display = 'block';
+				}
+			} catch (error) {
+				console.error('Ошибка:', error);
+				statusDiv.textContent = 'Ошибка: ' + error;
+				statusDiv.classList.add('error');
+				statusDiv.style.display = 'block';
+			} finally {
+
+				clearInterval(intervalId);
+            	submitBtn.textContent = 'Отправить';
+				submitBtn.removeAttribute('disabled');
+				
+				setTimeout(() => {
+					statusDiv.style.display = 'none';
+				}, 5000);
+			}
+		});
+</script>
+
+<form name="Contact Form" method="POST">
+	<FormInput type="text" label="Имя" name="Name" placeholder="Иван Иванов" />
+	<FormInput type="text" label="Телефон" name="Phone" placeholder="+71112233444"
+	/>
+	<FormTextarea
+		label="Сообщение"
+		name="Message"
+		placeholder="Кратко изложи здесь суть проблемы"
+	/>
+	<button class="button" id="submitBtn">
+		Отправить
+	</button>
+	<div id="spinner" style="display: none;">Отправляем</div>
+</form>
+
+<div id="status" class="status"></div>
+
+<style>
+	form {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.status {
+		position: fixed;
+		top: 1rem;
+		right: 1rem;
+		min-width: 10rem;
+		text-align: center;
+		padding: 2rem;
+
+		display: none;
+	}
+
+	.button {
+		border: none;
+		outline: none;
+		background: transparent;
+		min-width: 10rem;
+		width: fit-content;
+		padding: 0.36rem 0.92rem;
+		margin-bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #000;
+		color: #fff;
+		border: none;
+		border-radius: var(--theme-button-border-radius);
+		font-weight: 500;
+	}
+
+	.button:hover {
+		cursor: pointer;
+		background: rgba(0, 0, 0, 0.7);
+	}
+	.success {
+		background-color: lightgreen;
+	}
+	.error {
+		background-color: lightcoral;
+	}
+</style>

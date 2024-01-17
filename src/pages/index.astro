@@ -1,0 +1,131 @@
+---
+import TextSection from "../components/sections/TextSection.astro";
+import QuestionsSection from "../components/sections/TextSection.astro";
+import TwoColumnTextSection from "../components/sections/TwoColumnTextSection.astro";
+import Layout from "../layouts/Page.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import Relax from "../components/Relax.astro";
+import Contact from "../components/Contact.astro";
+
+const seo = {
+  title: "Адвокат",
+  description: "Поиск адвокатов. Контроль адвокатов",
+};
+---
+
+<Layout {seo}>
+  <HeroSection>
+    <div slot="text-container">
+      <h1>Адвокат Ян Выигроделов</h1>
+      <p>
+        Бывший судья, следователь, прокурор, оперуполномоченный, инспектор
+        РосКлещНадзора.
+      </p>
+      <p>
+        Помогаю решать любые судебные, досудебные и постсудебные юридические
+        вопросы. Работаю с юридическими, физическими и химическими лицами.
+      </p>
+      <p>
+        Победил тысячу дел. Пока писал этот текст, победил еще 3. Только что еще
+        5 новых взял.
+      </p>
+      <p>
+        Вот реальный отзыв: Ян мне очень помог. Ян сказал, что мы точно победим
+        и мы победили! Обязательно запишитесь к нему на консультацию или
+        попадете в тюрьму или проиграете дом или что там у вас...
+      </p>
+    </div>
+    <picture slot="image-container">
+      <img
+        src="/assets/images/home/classic-hero.jpg"
+        alt="Astro Odyssee"
+        id="home-hero-image"
+      />
+    </picture>
+  </HeroSection>
+  <QuestionsSection>
+    <div>
+      <p class="question">Не устал от тысяч однотипных резюме адвокатов?</p>
+      <p class="question">
+        Есть ощущение, что пока будешь разбираться, как найти хорошего, уже и
+        суд закончится?
+      </p>
+
+      <p class="question">
+        Страшно узнать уровень адвоката только после решения суда?
+      </p>
+
+      <p class="question">УСТАЛ! СТРАШНО!</p>
+    </div>
+  </QuestionsSection>
+
+  <TextSection>
+    <p class="text-large">
+      НЕОПРЕДЕЛЕННОСТЬ ПУГАЕТ. СТРАШНО ФИЗИЧЕСКИМ ЛИЦАМ, СТРАШНО ЮРИДИЧЕСКИМ.
+      ЭТО НОРМАЛЬНО!
+    </p>
+
+    <p class="text-base">
+      Как вообще выбрать адвоката? Как проверить информацию из резюме? Как
+      узнать специализацию и квалификацию? Где искать реальные отзывы и кто их
+      проверял? Откуда мне знать, что адвокат не договорится с оппонентами и не
+      начнет "сливать" дело? Почему у одного услуги стоят 50 000 за всё дело, а
+      у другого 15 000 за час? Как узнать, что мой делает действительно ВСЁ
+      возможное для победы? В конце концов, что делать, если адвокат меня просто
+      начнет бесить как человек?
+    </p>
+  </TextSection>
+
+  <TextSection>
+    <p class="text-large">
+      Не будем тянуть. Ведь если ты дочитал до этого места, то либо еще не нашел
+      хорошего адвоката, либо есть основания сомневаться в "хорошести" своего.
+    </p>
+
+    <p class="text-base">Мы предлагаем....</p>
+  </TextSection>
+
+  <Relax />
+
+  <TextSection>
+    <p class="text-large">Ну и, конечно, контроль над ситуацией:</p>
+  </TextSection>
+
+  <TwoColumnTextSection>
+    <div slot="column-1-body">
+      <h2>Подбор адвоката</h2>
+      <ul class="list">
+        <li class="list-item">Проведем за тебя собеседования с адвокатами</li>
+        <li class="list-item">Предоставим тебе сравнительную таблицу с понятными критериями</li>
+        <li class="list-item">Дадим рекомендации на что обращать внимание в процессе работы</li>
+      </ul>
+    </div>
+
+    <div slot="column-2-body">
+      <h2>Супервизия дела</h2>
+      <ul class="list">
+        <li class="list-item">Определим цель проекта</li>
+        <li class="list-item">
+          Разобьём проект на составные процессуальные и материальные части
+        </li>
+        <li class="list-item">Составим список задач, определим сроки и критерии выполнения</li>
+        <li class="list-item">
+          Будем еженедельно предоставлять отчет о проделанной адвокатом работе,
+          о нарушенных сроках и объективных (а не субъективных адвокатских)
+          причинах их растягивания
+        </li>
+        <li class="list-item">
+          Будем еженедельно актуализировать список задач и расставлять их по
+          приоритетности
+        </li>
+        <li class="list-item">
+          Сообщим тебе, если появятся основания сомневаться в качестве
+          адвокатских услуг
+        </li>
+        <li class="list-item">ПОМОЖЕМ ВЕРНУТЬ ДЕНЬГИ ЗА НЕКАЧЕСТВЕННО ОКАЗАННЫЕ УСЛУГИ</li>
+      </ul>
+    </div>
+  </TwoColumnTextSection>
+
+  <Contact />
+</Layout>

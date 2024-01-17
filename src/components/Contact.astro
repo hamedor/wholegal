@@ -1,0 +1,54 @@
+---
+import ContactForm from './forms/ContactForm.astro';
+import Container from './Container.astro';
+
+
+---
+
+<Container>
+	<section class="contact-hero__section">
+		<div class="contact-hero__text-section">
+			<h1>Напиши нам!</h1>
+			<p>
+				Выслушаем твой запрос, придумаем как помочь:
+			</p>
+			<div>
+				<p>
+					<a href="mailto:hello@odysseytheme.com">wholegal@mail.ru</a></em>
+				</p>
+			</div>
+		</div>
+		<div class="col-2__container">
+			<ContactForm />
+		</div>
+	</section>
+</Container> 
+
+
+<style>
+	.contact-hero__section {
+		margin: var(--section-margin) auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		min-height: calc(90vh - var(--navbar-height));
+		gap: 3rem;
+	}
+	.contact-hero__text-section {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: var(--theme-surface-1);
+		border-radius: var(--theme-shape-radius);
+	}
+	.col-2__container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	@media (max-width: 768px) {
+		.contact-hero__section {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

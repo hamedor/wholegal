@@ -1,0 +1,28 @@
+---
+import Header from '../components/Header.astro';
+import Layout from './Base.astro';
+import type { Props as BaseHeadProps } from '../components/head/BaseHead.astro';
+import Logo from '../components/Logo.astro';
+
+export interface Props {
+	seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props as Props;
+---
+
+<Layout seo={seo}>
+	<Header rightMenu  slot="header">
+		<span slot="logo">
+			<Logo />
+		</span>
+		<button>Напиши нам</button>
+	</Header>
+	<div id="page">
+		<slot />
+	</div>
+</Layout>
+
+<style>
+
+</style>
