@@ -42,7 +42,7 @@ import FormTextarea from './formFields/FormTextarea.astro'
 
 
 			try {
-				const response = await fetch('https://chimerical-twilight-122236.netlify.app/api/contact', {
+				const response = await fetch('https://chimerical-twilight-122236.netlify.app/.netlify/functions/api/contact', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
